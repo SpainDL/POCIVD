@@ -23,7 +23,11 @@ VIBE® Fixed Mount Machine Vision Camera - Jadak - A Novanta Company (jadaktech.
 
 Properties
 The QT framework was used to take advantage of its cross-compiling ability which allows the development of C++ applications that can be built and hosted on the G3 running a Linux-based OS.
-Cross Compilation to G3 Display. Please download "read me" for full project description, link below.
+Cross Compilation to G3 Display. Please download "POCIVD1_1 read me" for full project description, link below. For non code related demo instructions, such as setup instructions and running the demo 
 
-https://github.com/SpainDL/POCIVD1_1/blob/main/POCIVD%201_1%20read%20me.docx
+READ ME:
+https://github.com/SpainDL/POCIVD1_1/blob/9749a3097f0009da0bb4f871af18a1bde53c4eaa/POCIVD%201_1%20read%20me.docx
+
+SETUP & RUNNING DEMO:
+https://github.com/SpainDL/POCIVD1_1/blob/9749a3097f0009da0bb4f871af18a1bde53c4eaa/Running%20the%20POC%20IVD%20Demo.docx
 
