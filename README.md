@@ -1,7 +1,4 @@
-Point of Care
-Invitro Diagnostics
-Introduction
-This application was created to control the Point of Care Invitro Diagnostics (POCIVD) Demo and was developed in C++ using QT, 
+The Point of Care Invitro Diagnostics application was created to control the (POCIVD) Demo and was developed in C++ using QT, 
 which is a Cross-platform application development platform. The purpose of this application is for the user (physician) to present 
 their ID badge (RFID card) and then perform an analysis of a test strip. The test strip consists of a patient’s ID in the form 
 of a barcode on one end. On the other end, there are test containing a line labeled “C” or “T”. Depending on the sequence of lines, 
