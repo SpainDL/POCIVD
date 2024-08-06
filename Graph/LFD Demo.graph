@@ -1,0 +1,1298 @@
+{
+    "fileName": ".userspace/graphs/LFD Demo.graph",
+    "appVersion": "0.6.2",
+    "schemaVersion": "8.0",
+    "protection": false,
+    "comment": "",
+    "groups": [],
+    "nodes": [
+        {
+            "name": "RoiFromCenterPoint",
+            "moduleName": "pyclarity_all_plugins.Utils.elements.RoiGenerator.RoiFromCenterPoint",
+            "uuid": "a31cddc1-50fe-4db8-99ef-f6775956a1dd",
+            "inputs": [
+                {
+                    "name": "img",
+                    "uuid": "54ade4fc-0a05-4762-b8d6-afa48728695c",
+                    "direction": 0,
+                    "links": [],
+                    "show": true
+                },
+                {
+                    "name": "center point",
+                    "uuid": "ee140d70-ceb0-49cc-b94c-5b28f8165c62",
+                    "direction": 0,
+                    "links": [
+                        {
+                            "otherNodeName": "featureFind",
+                            "otherNodeUuid": "aadf746f-1240-4c01-a583-36c295937403",
+                            "otherPin": "center point",
+                            "otherPinUuid": "2cfa0c4d-6b73-4828-95fe-1e8fc2ab2da3"
+                        }
+                    ],
+                    "show": true
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "roi",
+                    "uuid": "e64ebe4a-32fa-401c-ba9c-76c63806d1a6",
+                    "direction": 1,
+                    "links": [
+                        {
+                            "otherNodeName": "Control_lineFinder",
+                            "otherNodeUuid": "bb7f2f38-d7fd-4c69-bd5a-c16d07199939",
+                            "otherPin": "search roi",
+                            "otherPinUuid": "2448cebf-9b9e-4790-9269-217d7f3fd092"
+                        }
+                    ]
+                }
+            ],
+            "params": [
+                {
+                    "className": "ViewerParam",
+                    "varName": "view",
+                    "value": false,
+                    "display": null,
+                    "uuid": "f5c3855f-0bee-4eee-8ab5-bad95584eaa9",
+                    "geometry": null
+                },
+                {
+                    "className": "BoolParam",
+                    "varName": "full_width",
+                    "value": null,
+                    "display": "Use full width",
+                    "uuid": "974909d4-3550-4c78-9477-72cce94550ab",
+                    "runOnce": false
+                },
+                {
+                    "className": "BoolParam",
+                    "varName": "full_height",
+                    "value": null,
+                    "display": "Use full height",
+                    "uuid": "2d903230-ca78-4594-acb4-f5b8c78e0657",
+                    "runOnce": false
+                },
+                {
+                    "className": "IntParam",
+                    "varName": "xoff",
+                    "value": 40,
+                    "display": "Column start\n  - offset from center point",
+                    "uuid": "53fe10c8-de83-49d6-b8c0-1e507b219944",
+                    "runOnce": false,
+                    "minVal": -1000000,
+                    "maxVal": 1000000,
+                    "step": 1
+                },
+                {
+                    "className": "IntParam",
+                    "varName": "yoff",
+                    "value": -80,
+                    "display": "Row start\n  - offset from center point",
+                    "uuid": "c57b1efb-3ecd-46ee-b2a5-6ccd9658e147",
+                    "runOnce": false,
+                    "minVal": -1000000,
+                    "maxVal": 1000000,
+                    "step": 1
+                },
+                {
+                    "className": "IntParam",
+                    "varName": "width",
+                    "value": 100,
+                    "display": "Width of ROI",
+                    "uuid": "2ad53928-2fd7-4c57-b876-f63f65e002e0",
+                    "runOnce": false,
+                    "minVal": -1000000,
+                    "maxVal": 1000000,
+                    "step": 1
+                },
+                {
+                    "className": "IntParam",
+                    "varName": "height",
+                    "value": 100,
+                    "display": "Height of ROI",
+                    "uuid": "ddf3c6c6-0168-47d2-904d-2baf0e248832",
+                    "runOnce": false,
+                    "minVal": -1000000,
+                    "maxVal": 1000000,
+                    "step": 1
+                }
+            ],
+            "x": 106.41904569750744,
+            "y": 116.90502894738498,
+            "width": 136.0,
+            "height": 85.0,
+            "code": null,
+            "preview": false,
+            "param_view": true,
+            "param_view_filter": {
+                "view": false,
+                "full_width": false,
+                "full_height": false,
+                "xoff": false,
+                "yoff": false,
+                "width": false,
+                "height": false
+            },
+            "group": null
+        },
+        {
+            "name": "featureFind",
+            "moduleName": "pyclarity_all_plugins.ImageProcessingToolbox.elements.Registration.FeatureFind.featureFind",
+            "uuid": "aadf746f-1240-4c01-a583-36c295937403",
+            "inputs": [
+                {
+                    "name": "img",
+                    "uuid": "7a092a86-ddcf-499c-aa28-3fc5ff6ed266",
+                    "direction": 0,
+                    "links": [
+                        {
+                            "otherNodeName": "acquireImageCamera",
+                            "otherNodeUuid": "53b8cd6e-8e23-4b6e-a87e-4a9698199cd7",
+                            "otherPin": "img",
+                            "otherPinUuid": "b5afbd90-afc8-4de8-acd7-a914dfd270f7"
+                        }
+                    ],
+                    "show": true
+                },
+                {
+                    "name": "offset",
+                    "uuid": "6d6cafa4-1156-4d64-84eb-984a4d398b3f",
+                    "direction": 0,
+                    "links": [],
+                    "show": true
+                },
+                {
+                    "name": "search roi",
+                    "uuid": "b0a78029-3f8f-4e49-9601-d7644b7e743f",
+                    "direction": 0,
+                    "links": [],
+                    "show": true
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "result",
+                    "uuid": "b2e19b41-a04e-4ba8-a52d-9416880799eb",
+                    "direction": 1,
+                    "links": []
+                },
+                {
+                    "name": "found",
+                    "uuid": "ae738fe0-3c3c-441f-8339-610ee7f1aed6",
+                    "direction": 1,
+                    "links": []
+                },
+                {
+                    "name": "score",
+                    "uuid": "1737f70b-e323-46a2-9cd2-206660c07dc7",
+                    "direction": 1,
+                    "links": []
+                },
+                {
+                    "name": "center point",
+                    "uuid": "2cfa0c4d-6b73-4828-95fe-1e8fc2ab2da3",
+                    "direction": 1,
+                    "links": [
+                        {
+                            "otherNodeName": "RoiFromCenterPoint",
+                            "otherNodeUuid": "a31cddc1-50fe-4db8-99ef-f6775956a1dd",
+                            "otherPin": "center point",
+                            "otherPinUuid": "ee140d70-ceb0-49cc-b94c-5b28f8165c62"
+                        },
+                        {
+                            "otherNodeName": "RoiFromCenterPoint1",
+                            "otherNodeUuid": "3638b2e4-f4a5-44fb-a16d-6fd765b2a114",
+                            "otherPin": "center point",
+                            "otherPinUuid": "2bab2f2c-b275-4341-8b18-69c18290f596"
+                        }
+                    ]
+                }
+            ],
+            "params": [
+                {
+                    "className": "ViewerParam",
+                    "varName": "view",
+                    "value": false,
+                    "display": null,
+                    "uuid": "c1e1a0be-0792-4365-9a6c-b3f954e87e05",
+                    "geometry": null
+                },
+                {
+                    "className": "PathParam",
+                    "varName": "Pattern",
+                    "value": "Userspace/pix_pattern_2023_06_26__11_17_45_AM.bin",
+                    "display": null,
+                    "uuid": "040fd344-1f4d-491c-bf2e-cf7bea29cfc4",
+                    "runOnce": false,
+                    "filters": null,
+                    "toOpen": true,
+                    "associate": "TrainFeatureFind"
+                },
+                {
+                    "className": "IntParam",
+                    "varName": "AnchorOffset_X",
+                    "value": 0,
+                    "display": null,
+                    "uuid": "7addb0f9-c173-4bb8-adb9-cba78e63f4d9",
+                    "runOnce": false,
+                    "minVal": -1000000,
+                    "maxVal": 1000000,
+                    "step": 1
+                },
+                {
+                    "className": "IntParam",
+                    "varName": "AnchorOffset_Y",
+                    "value": -5,
+                    "display": null,
+                    "uuid": "92ba70cd-f544-4c6e-a96a-70fbf7014462",
+                    "runOnce": false,
+                    "minVal": -1000000,
+                    "maxVal": 1000000,
+                    "step": 1
+                },
+                {
+                    "className": "IntParam",
+                    "varName": "Low Res Threshold",
+                    "value": 0,
+                    "display": null,
+                    "uuid": "1e91afb5-3fd9-41f1-9df1-3de94be996cb",
+                    "runOnce": false,
+                    "minVal": 0,
+                    "maxVal": 255,
+                    "step": 1
+                },
+                {
+                    "className": "IntParam",
+                    "varName": "High Res Threshold",
+                    "value": 100,
+                    "display": null,
+                    "uuid": "f352e321-cb34-4025-8c86-b42a4f84b253",
+                    "runOnce": false,
+                    "minVal": 0,
+                    "maxVal": 255,
+                    "step": 1
+                },
+                {
+                    "className": "IntParam",
+                    "varName": "Min Angle",
+                    "value": -25,
+                    "display": null,
+                    "uuid": "4e8eaaef-e628-4a5d-8517-9f00d8dd34c9",
+                    "runOnce": false,
+                    "minVal": -180,
+                    "maxVal": 0,
+                    "step": 1
+                },
+                {
+                    "className": "IntParam",
+                    "varName": "Max Angle",
+                    "value": 25,
+                    "display": null,
+                    "uuid": "2e8346e3-214d-4978-98cd-18851c420c69",
+                    "runOnce": false,
+                    "minVal": 0,
+                    "maxVal": 180,
+                    "step": 1
+                },
+                {
+                    "className": "IntParam",
+                    "varName": "Required Score (0-100)",
+                    "value": 90,
+                    "display": null,
+                    "uuid": "6a4a6e2a-7756-4953-bec6-e57de1bd0e34",
+                    "runOnce": false,
+                    "minVal": 0,
+                    "maxVal": 100,
+                    "step": 1
+                },
+                {
+                    "className": "IntParam",
+                    "varName": "Trans Skip",
+                    "value": 5,
+                    "display": null,
+                    "uuid": "dabe9718-0611-43f5-808b-311012dcc2e1",
+                    "runOnce": false,
+                    "minVal": 0,
+                    "maxVal": 255,
+                    "step": 1
+                },
+                {
+                    "className": "IntParam",
+                    "varName": "Max Iterations",
+                    "value": 5,
+                    "display": null,
+                    "uuid": "03646e32-f0f1-49f5-915a-5ebd9b5a5b5b",
+                    "runOnce": false,
+                    "minVal": 0,
+                    "maxVal": 100,
+                    "step": 1
+                },
+                {
+                    "className": "IntParam",
+                    "varName": "Coarse Angle Step",
+                    "value": 5,
+                    "display": null,
+                    "uuid": "20ad5311-1355-455f-960d-56c4c4c279da",
+                    "runOnce": false,
+                    "minVal": 0,
+                    "maxVal": 100,
+                    "step": 1
+                },
+                {
+                    "className": "IntParam",
+                    "varName": "Fine Angle Step",
+                    "value": 1,
+                    "display": null,
+                    "uuid": "c9f14e0f-88a8-493a-a545-1ce556ab42f9",
+                    "runOnce": false,
+                    "minVal": 0,
+                    "maxVal": 100,
+                    "step": 1
+                },
+                {
+                    "className": "RoiParam",
+                    "varName": "roi",
+                    "value": {
+                        "x": 1100,
+                        "y": 1053,
+                        "width": 766,
+                        "height": 152,
+                        "angle": 0
+                    },
+                    "display": null,
+                    "uuid": "93b11aaf-6ea8-431f-aa74-95dd93ff1f26",
+                    "runOnce": false,
+                    "flags": {
+                        "draw_helper_lines": false,
+                        "keep_in_boundary": true,
+                        "allow_rotation": false,
+                        "is_symmetric": false
+                    },
+                    "viewerTag": "view",
+                    "alwaysOn": false,
+                    "enabled": true
+                },
+                {
+                    "className": "TrainingParam",
+                    "varName": "TrainFeatureFind",
+                    "value": null,
+                    "display": "Train Feature Find Pattern",
+                    "uuid": "8ad4e146-653e-4cba-95ef-e60dd72a324d",
+                    "viewerRef": null,
+                    "x": 1316,
+                    "y": 1162,
+                    "width": 164,
+                    "height": 60,
+                    "angle": 0,
+                    "trainingType": "feature find",
+                    "subObjects": [
+                        {
+                            "className": "PathParam",
+                            "varName": "Pattern",
+                            "value": "",
+                            "display": null,
+                            "uuid": "aeca117c-91cf-4bf0-8b33-379b9fc68550",
+                            "runOnce": false,
+                            "filters": null,
+                            "toOpen": false,
+                            "associate": null
+                        },
+                        {
+                            "className": "ComboBoxParam",
+                            "varName": "Training type",
+                            "value": 1,
+                            "display": null,
+                            "uuid": "17ec5159-4236-4ff3-bfef-880d04b8392c",
+                            "runOnce": false,
+                            "values": {
+                                "Pixel": 1,
+                                "Edge": 2
+                            },
+                            "defaultVal": null
+                        },
+                        {
+                            "className": "IntParam",
+                            "varName": "SubSample",
+                            "value": 2,
+                            "display": null,
+                            "uuid": "2a6c7c7c-f4ee-43bb-a490-473d42613bd3",
+                            "runOnce": false,
+                            "minVal": 0,
+                            "maxVal": 10,
+                            "step": 1
+                        },
+                        {
+                            "className": "FloatParam",
+                            "varName": "Granularity",
+                            "value": 3.0,
+                            "display": null,
+                            "uuid": "d11e6117-a119-492b-9bba-d374e6f0bf25",
+                            "runOnce": false,
+                            "minVal": 0,
+                            "maxVal": 10,
+                            "step": 0.1
+                        },
+                        {
+                            "className": "FloatParam",
+                            "varName": "Sigma",
+                            "value": 2.0,
+                            "display": null,
+                            "uuid": "e9443d65-67e5-4fa9-8f7e-a1ba56ae9adc",
+                            "runOnce": false,
+                            "minVal": 0,
+                            "maxVal": 10,
+                            "step": 0.1
+                        },
+                        {
+                            "className": "FloatParam",
+                            "varName": "Low Threshold",
+                            "value": 0.2,
+                            "display": null,
+                            "uuid": "07cd62cd-cd5b-4710-86bd-39acfe67e5aa",
+                            "runOnce": false,
+                            "minVal": 0,
+                            "maxVal": 1,
+                            "step": 0.1
+                        },
+                        {
+                            "className": "FloatParam",
+                            "varName": "High Threshold",
+                            "value": 0.45,
+                            "display": null,
+                            "uuid": "5f87da25-c52e-490c-b95a-86390d316a65",
+                            "runOnce": false,
+                            "minVal": 0,
+                            "maxVal": 1,
+                            "step": 0.1
+                        },
+                        {
+                            "className": "PointParam",
+                            "varName": "Anchor",
+                            "value": {
+                                "x": 0,
+                                "y": 0
+                            },
+                            "display": null,
+                            "uuid": "806abce5-a5e0-4550-8ab0-05231c9d7769",
+                            "runOnce": false,
+                            "viewerTag": 1,
+                            "alwaysOn": false,
+                            "enabled": false
+                        }
+                    ]
+                }
+            ],
+            "x": 105.74535519125678,
+            "y": -133.0534158310481,
+            "width": 156.0,
+            "height": 119.0,
+            "code": null,
+            "preview": false,
+            "param_view": true,
+            "param_view_filter": {
+                "view": false,
+                "Pattern": false,
+                "AnchorOffset_X": false,
+                "AnchorOffset_Y": false,
+                "Low Res Threshold": false,
+                "High Res Threshold": false,
+                "Min Angle": false,
+                "Max Angle": false,
+                "Required Score (0-100)": false,
+                "Trans Skip": false,
+                "Max Iterations": false,
+                "Coarse Angle Step": false,
+                "Fine Angle Step": false,
+                "roi": false,
+                "TrainFeatureFind": false
+            },
+            "group": null
+        },
+        {
+            "name": "Control_lineFinder",
+            "moduleName": "pyclarity.Graph.TempModules.b5ded0c694614058bd9e1c10ea5406a1.Control_lineFinder",
+            "uuid": "bb7f2f38-d7fd-4c69-bd5a-c16d07199939",
+            "inputs": [
+                {
+                    "name": "img",
+                    "uuid": "932ef0da-92fa-4439-a821-a7fdfca8d9f7",
+                    "direction": 0,
+                    "links": [
+                        {
+                            "otherNodeName": "acquireImageCamera",
+                            "otherNodeUuid": "53b8cd6e-8e23-4b6e-a87e-4a9698199cd7",
+                            "otherPin": "img",
+                            "otherPinUuid": "b5afbd90-afc8-4de8-acd7-a914dfd270f7"
+                        }
+                    ],
+                    "show": true
+                },
+                {
+                    "name": "offset",
+                    "uuid": "9580a67b-b290-4ddc-8c42-aa72a344a0a6",
+                    "direction": 0,
+                    "links": [],
+                    "show": true
+                },
+                {
+                    "name": "search roi",
+                    "uuid": "2448cebf-9b9e-4790-9269-217d7f3fd092",
+                    "direction": 0,
+                    "links": [
+                        {
+                            "otherNodeName": "RoiFromCenterPoint",
+                            "otherNodeUuid": "a31cddc1-50fe-4db8-99ef-f6775956a1dd",
+                            "otherPin": "roi",
+                            "otherPinUuid": "e64ebe4a-32fa-401c-ba9c-76c63806d1a6"
+                        }
+                    ],
+                    "show": true
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "result",
+                    "uuid": "54bd915c-81f3-4a9c-9543-b90446bd8a7c",
+                    "direction": 1,
+                    "links": []
+                },
+                {
+                    "name": "found",
+                    "uuid": "97dd18cc-3b6f-4665-b48a-f58f2deafdd4",
+                    "direction": 1,
+                    "links": [
+                        {
+                            "otherNodeName": "outputAsString",
+                            "otherNodeUuid": "a6d06dab-41d3-4838-8f1e-ab26a6c973ed",
+                            "otherPin": "str in",
+                            "otherPinUuid": "bd1d4274-a731-4899-bdb9-512d49627df0"
+                        }
+                    ]
+                },
+                {
+                    "name": "score",
+                    "uuid": "f28087fd-060a-4a99-a2f9-dc90e17e6709",
+                    "direction": 1,
+                    "links": []
+                },
+                {
+                    "name": "center point",
+                    "uuid": "b6fb4188-849e-4393-9224-24babdb3bcbf",
+                    "direction": 1,
+                    "links": []
+                }
+            ],
+            "params": [
+                {
+                    "className": "ViewerParam",
+                    "varName": "view",
+                    "value": false,
+                    "display": null,
+                    "uuid": "98651731-eb35-4b03-9899-4ba6558cd97f",
+                    "geometry": null
+                },
+                {
+                    "className": "IntParam",
+                    "varName": "Min Contrast",
+                    "value": 25,
+                    "display": null,
+                    "uuid": "729d76a0-446e-4183-a3f5-8b79bdc701ee",
+                    "runOnce": false,
+                    "minVal": 10,
+                    "maxVal": 240,
+                    "step": 1
+                },
+                {
+                    "className": "IntParam",
+                    "varName": "Min Shape",
+                    "value": 30,
+                    "display": null,
+                    "uuid": "ac278847-8220-4a20-8e05-e8220b67b886",
+                    "runOnce": false,
+                    "minVal": 10,
+                    "maxVal": 99,
+                    "step": 1
+                },
+                {
+                    "className": "IntParam",
+                    "varName": "Max Angle",
+                    "value": 30,
+                    "display": null,
+                    "uuid": "977bc41d-ff42-4224-9e3c-31daa5508fc4",
+                    "runOnce": false,
+                    "minVal": 0,
+                    "maxVal": 45,
+                    "step": 1
+                },
+                {
+                    "className": "BoolParam",
+                    "varName": "Rotation Allowed",
+                    "value": false,
+                    "display": null,
+                    "uuid": "7edc86ef-bf95-419d-bcd3-6c7339a55dd3",
+                    "runOnce": false
+                },
+                {
+                    "className": "ComboBoxParam",
+                    "varName": "Polarity",
+                    "value": 2,
+                    "display": null,
+                    "uuid": "91ff4fd1-831c-4382-b89e-ceef699a467e",
+                    "runOnce": false,
+                    "values": {
+                        "Black to White": 2,
+                        "White to Black": 1,
+                        "Both": 3
+                    },
+                    "defaultVal": null
+                },
+                {
+                    "className": "ComboBoxParam",
+                    "varName": "Find Mode",
+                    "value": 3,
+                    "display": null,
+                    "uuid": "7a76e939-0d84-4234-bd47-43a30d34ba00",
+                    "runOnce": false,
+                    "values": {
+                        "Strongest": 3,
+                        "Left Most": 0,
+                        "Mid Most": 1,
+                        "Right Most": 2,
+                        "Left Strong": 4,
+                        "Middle Strong": 5,
+                        "Right Strong": 6
+                    },
+                    "defaultVal": null
+                },
+                {
+                    "className": "RoiParam",
+                    "varName": "roi",
+                    "value": {
+                        "x": 0,
+                        "y": 0,
+                        "width": 32,
+                        "height": 32,
+                        "angle": 0
+                    },
+                    "display": null,
+                    "uuid": "75906d41-e62c-4063-a08e-61d8e430c29f",
+                    "runOnce": false,
+                    "flags": {
+                        "draw_helper_lines": false,
+                        "keep_in_boundary": true,
+                        "allow_rotation": false,
+                        "is_symmetric": false
+                    },
+                    "viewerTag": "view",
+                    "alwaysOn": false,
+                    "enabled": false
+                }
+            ],
+            "x": 453.2575803603529,
+            "y": 157.69931941968733,
+            "width": 156.0,
+            "height": 119.0,
+            "code": "import mvlib\nfrom mvlib import utils\nfrom jlog import log\nfrom pyclarity_element_core.connectors import Input, Output\nfrom pyclarity_element_core.element import Element\nfrom pyclarity_element_core.parameters import *\n\nclass Control_lineFinder(Element):\n    _name = \"MVLIb Line Finder\"\n    _comment = \"Primitive line finder\"\n\n    def attributes(self):\n        return [Input(\"img\"),\n             Input(\"offset\"),\n             Input(\"search roi\")], \\\n            [Output(\"result\"),\n             Output(\"found\"),\n             Output(\"score\"),\n             Output(\"center point\")], \\\n            [ViewerParam(\"view\"),\n             IntParam(\"Min Contrast\", value=25, minVal=10, maxVal=240),\n             IntParam(\"Min Shape\", value=30, minVal=10, maxVal=99),\n             IntParam(\"Max Angle\", value=30, minVal=0, maxVal=45),\n             BoolParam(\"Rotation Allowed\", value=True),\n             ComboBoxParam(\"Polarity\",\n                           values={\"Black to White\":mvlib.PRIMITIVE_FIND_POLARITY_BLACK_TO_WHITE,\n                                   \"White to Black\":mvlib.PRIMITIVE_FIND_POLARITY_WHITE_TO_BLACK,\n                                   \"Both\":mvlib.PRIMITIVE_FIND_POLARITY_BOTH}),\n             ComboBoxParam(\"Find Mode\",\n                           values={\"Strongest\":mvlib.PrimitiveFindLine.LINE_STRONGEST,\n                                    \"Left Most\":mvlib.PrimitiveFindLine.LINE_LEFTMOST,\n                                    \"Mid Most\":mvlib.PrimitiveFindLine.LINE_MIDMOST,\n                                    \"Right Most\":mvlib.PrimitiveFindLine.LINE_RIGHTMOST,\n                                    \"Left Strong\":mvlib.PrimitiveFindLine.LINE_LEFTSTRONG,\n                                    \"Middle Strong\":mvlib.PrimitiveFindLine.LINE_MIDDLESTRONG,\n                                    \"Right Strong\":mvlib.PrimitiveFindLine.LINE_RIGHTSTRONG}),\n             RoiParam(\"roi\", viewerTag=\"view\")]\n\n    def processScript(self, inputs, outputs, params, preInit):\n        if \"img\" not in inputs:\n            raise Exception(\"No input image\")\n\n        finder = mvlib.PrimitiveFindLine(polarity=params[\"Polarity\"].get(),\n                            min_contrast=params[\"Min Contrast\"].get(),\n                            min_shape=params[\"Min Shape\"].get(),\n                            find_mode=params[\"Find Mode\"].get(),\n                            rot_allowed=params[\"Rotation Allowed\"].get(),\n                            max_angle=params[\"Max Angle\"].get())\n        \n        # Input ROI has priority\n        rect = None\n        if \"search roi\" in inputs:\n            params[\"roi\"].setEnabled(False)\n            rect = inputs[\"search roi\"]\n            finder.set_roi(rect[\"x\"], rect[\"y\"], rect[\"width\"], rect[\"height\"])\n        elif params[\"roi\"].isEnabled():\n            rect = params[\"roi\"].getRect()\n            finder.set_roi(rect[\"x\"], rect[\"y\"], rect[\"width\"], rect[\"height\"])\n        else:\n            finder.roi = None\n\n        if \"offset\" in inputs:\n            if \"angle\" in inputs[\"offset\"]:\n                angle = inputs[\"offset\"][\"angle\"]\n            else:\n                angle = 0\n            finder.set_offset(inputs[\"offset\"][\"x\"],\n                              inputs[\"offset\"][\"y\"],\n                              angle)\n\n        outputs[\"result\"] = finder.find_line(inputs[\"img\"])\n\n        RED = 0xff0000\n        GREEN = 0xff00\n        params[\"view\"].updateImage(inputs[\"img\"])        \n        if outputs[\"result\"].return_val != 0:\n            if params[\"roi\"].isEnabled():\n                params[\"roi\"].setColor(RED)\n            elif rect:\n                params[\"view\"].AddRect(\n                        rect[\"x\"],\n                        rect[\"y\"],\n                        rect[\"width\"],\n                        rect[\"height\"], color=RED)\n                params[\"view\"].DrawAddedObjects()\n            outputs[\"found\"] = 0\n            outputs[\"score\"] = 0\n            outputs[\"center point\"] = {\n                \"x\": 0,\n                \"y\": 0}\n\n            raise Exception(\"Line Find Failed with return value: \" + \n                  mvlib.utils.script_result_to_string(outputs[\"result\"].return_val))\n        else:\n            if params[\"roi\"].isEnabled():\n                params[\"roi\"].setColor(GREEN)\n            elif rect:\n                params[\"view\"].AddRect(\n                        rect[\"x\"],\n                        rect[\"y\"],\n                        rect[\"width\"],\n                        rect[\"height\"], color=GREEN)\n            params[\"view\"].AddLine(outputs[\"result\"].line_point_a_x,\n                                   outputs[\"result\"].line_point_a_y,\n                                   outputs[\"result\"].line_point_b_x,\n                                   outputs[\"result\"].line_point_b_y,\n                                   3,\n                                   0x00FF00)  # Green\n            params[\"view\"].DrawAddedObjects()\n            outputs[\"found\"] = outputs[\"result\"].found\n            outputs[\"score\"] = outputs[\"result\"].score\n            outputs[\"center point\"] = {\n                \"x\": outputs[\"result\"].line_midpoint_x,\n                \"y\": outputs[\"result\"].line_midpoint_y}\n\n            log.info(\"Found: \" + str(outputs[\"found\"]))\n            log.info(\"Score: \" + str(outputs[\"score\"]))\n            log.info(\"Line Mid Point ({}, {})\".format(\n                outputs[\"result\"].line_midpoint_x,\n                outputs[\"result\"].line_midpoint_y))                                             ",
+            "preview": false,
+            "param_view": true,
+            "param_view_filter": {
+                "view": false,
+                "Min Contrast": false,
+                "Min Shape": false,
+                "Max Angle": false,
+                "Rotation Allowed": false,
+                "Polarity": false,
+                "Find Mode": false,
+                "roi": false
+            },
+            "group": null
+        },
+        {
+            "name": "Test_lineFinder",
+            "moduleName": "pyclarity.Graph.TempModules.f12f595eb3b04ee49c8df96772bf67be.Test_lineFinder",
+            "uuid": "c04bf97b-ce17-43f1-b3b7-7fd6be35dd59",
+            "inputs": [
+                {
+                    "name": "img",
+                    "uuid": "e381bddd-26eb-4331-a920-10c7b974c5aa",
+                    "direction": 0,
+                    "links": [
+                        {
+                            "otherNodeName": "acquireImageCamera",
+                            "otherNodeUuid": "53b8cd6e-8e23-4b6e-a87e-4a9698199cd7",
+                            "otherPin": "img",
+                            "otherPinUuid": "b5afbd90-afc8-4de8-acd7-a914dfd270f7"
+                        }
+                    ],
+                    "show": true
+                },
+                {
+                    "name": "offset",
+                    "uuid": "f5627ee2-2908-4a96-9e7d-2a63b31096b9",
+                    "direction": 0,
+                    "links": [],
+                    "show": true
+                },
+                {
+                    "name": "search roi",
+                    "uuid": "af41253f-26f9-4c29-b3b6-3fcb019fea12",
+                    "direction": 0,
+                    "links": [
+                        {
+                            "otherNodeName": "RoiFromCenterPoint1",
+                            "otherNodeUuid": "3638b2e4-f4a5-44fb-a16d-6fd765b2a114",
+                            "otherPin": "roi",
+                            "otherPinUuid": "6cb855c0-0eeb-4b73-8215-e03aa1e34187"
+                        }
+                    ],
+                    "show": true
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "result",
+                    "uuid": "043e0006-ecf0-4cfc-9372-59a90a8f2ac6",
+                    "direction": 1,
+                    "links": []
+                },
+                {
+                    "name": "found",
+                    "uuid": "f00a4bad-6c25-41ed-9949-f15d5a46cb2f",
+                    "direction": 1,
+                    "links": [
+                        {
+                            "otherNodeName": "outputAsString",
+                            "otherNodeUuid": "a6d06dab-41d3-4838-8f1e-ab26a6c973ed",
+                            "otherPin": "str in 2",
+                            "otherPinUuid": "4bbc0cf1-1e68-4c90-822a-7b7766081637"
+                        }
+                    ]
+                },
+                {
+                    "name": "score",
+                    "uuid": "c2506f41-cd37-4a91-b09e-164089b7beb6",
+                    "direction": 1,
+                    "links": []
+                },
+                {
+                    "name": "center point",
+                    "uuid": "baeb0564-205a-4a86-bd57-80e576bb617b",
+                    "direction": 1,
+                    "links": []
+                }
+            ],
+            "params": [
+                {
+                    "className": "ViewerParam",
+                    "varName": "view",
+                    "value": false,
+                    "display": null,
+                    "uuid": "9dea9871-b841-4689-aea6-511234eeb00e",
+                    "geometry": null
+                },
+                {
+                    "className": "IntParam",
+                    "varName": "Min Contrast",
+                    "value": 25,
+                    "display": null,
+                    "uuid": "a293fdc2-9c84-4234-98f7-7aa61961f021",
+                    "runOnce": false,
+                    "minVal": 10,
+                    "maxVal": 240,
+                    "step": 1
+                },
+                {
+                    "className": "IntParam",
+                    "varName": "Min Shape",
+                    "value": 30,
+                    "display": null,
+                    "uuid": "bfc136e9-7a6c-46ab-aa62-b6f036fdd813",
+                    "runOnce": false,
+                    "minVal": 10,
+                    "maxVal": 99,
+                    "step": 1
+                },
+                {
+                    "className": "IntParam",
+                    "varName": "Max Angle",
+                    "value": 30,
+                    "display": null,
+                    "uuid": "183edc90-8579-441f-946d-5f146918ab30",
+                    "runOnce": false,
+                    "minVal": 0,
+                    "maxVal": 45,
+                    "step": 1
+                },
+                {
+                    "className": "BoolParam",
+                    "varName": "Rotation Allowed",
+                    "value": true,
+                    "display": null,
+                    "uuid": "a19d2049-eaa0-4dfc-bb62-ef4e7130c70c",
+                    "runOnce": false
+                },
+                {
+                    "className": "ComboBoxParam",
+                    "varName": "Polarity",
+                    "value": 2,
+                    "display": null,
+                    "uuid": "a0172ee2-22ad-41ef-888e-657b7f60b480",
+                    "runOnce": false,
+                    "values": {
+                        "Black to White": 2,
+                        "White to Black": 1,
+                        "Both": 3
+                    },
+                    "defaultVal": null
+                },
+                {
+                    "className": "ComboBoxParam",
+                    "varName": "Find Mode",
+                    "value": 3,
+                    "display": null,
+                    "uuid": "82923823-51a4-456f-96fb-b9cdb8a54148",
+                    "runOnce": false,
+                    "values": {
+                        "Strongest": 3,
+                        "Left Most": 0,
+                        "Mid Most": 1,
+                        "Right Most": 2,
+                        "Left Strong": 4,
+                        "Middle Strong": 5,
+                        "Right Strong": 6
+                    },
+                    "defaultVal": null
+                },
+                {
+                    "className": "RoiParam",
+                    "varName": "roi",
+                    "value": {
+                        "x": 0,
+                        "y": 0,
+                        "width": 32,
+                        "height": 32,
+                        "angle": 0
+                    },
+                    "display": null,
+                    "uuid": "ea2e8abb-4a3f-4e50-9639-f3e2bacde487",
+                    "runOnce": false,
+                    "flags": {
+                        "draw_helper_lines": false,
+                        "keep_in_boundary": true,
+                        "allow_rotation": false,
+                        "is_symmetric": false
+                    },
+                    "viewerTag": "view",
+                    "alwaysOn": false,
+                    "enabled": false
+                }
+            ],
+            "x": 449.94227504244475,
+            "y": 348.69207398802604,
+            "width": 156.0,
+            "height": 119.0,
+            "code": "import mvlib\nfrom mvlib import utils\nfrom jlog import log\nfrom pyclarity_element_core.connectors import Input, Output\nfrom pyclarity_element_core.element import Element\nfrom pyclarity_element_core.parameters import *\n\nclass Test_lineFinder(Element):\n    _name = \"MVLIb Line Finder\"\n    _comment = \"Primitive line finder\"\n\n    def attributes(self):\n        return [Input(\"img\"),\n             Input(\"offset\"),\n             Input(\"search roi\")], \\\n            [Output(\"result\"),\n             Output(\"found\"),\n             Output(\"score\"),\n             Output(\"center point\")], \\\n            [ViewerParam(\"view\"),\n             IntParam(\"Min Contrast\", value=25, minVal=10, maxVal=240),\n             IntParam(\"Min Shape\", value=30, minVal=10, maxVal=99),\n             IntParam(\"Max Angle\", value=30, minVal=0, maxVal=45),\n             BoolParam(\"Rotation Allowed\", value=True),\n             ComboBoxParam(\"Polarity\",\n                           values={\"Black to White\":mvlib.PRIMITIVE_FIND_POLARITY_BLACK_TO_WHITE,\n                                   \"White to Black\":mvlib.PRIMITIVE_FIND_POLARITY_WHITE_TO_BLACK,\n                                   \"Both\":mvlib.PRIMITIVE_FIND_POLARITY_BOTH}),\n             ComboBoxParam(\"Find Mode\",\n                           values={\"Strongest\":mvlib.PrimitiveFindLine.LINE_STRONGEST,\n                                    \"Left Most\":mvlib.PrimitiveFindLine.LINE_LEFTMOST,\n                                    \"Mid Most\":mvlib.PrimitiveFindLine.LINE_MIDMOST,\n                                    \"Right Most\":mvlib.PrimitiveFindLine.LINE_RIGHTMOST,\n                                    \"Left Strong\":mvlib.PrimitiveFindLine.LINE_LEFTSTRONG,\n                                    \"Middle Strong\":mvlib.PrimitiveFindLine.LINE_MIDDLESTRONG,\n                                    \"Right Strong\":mvlib.PrimitiveFindLine.LINE_RIGHTSTRONG}),\n             RoiParam(\"roi\", viewerTag=\"view\")]\n\n    def processScript(self, inputs, outputs, params, preInit):\n        if \"img\" not in inputs:\n            raise Exception(\"No input image\")\n\n        finder = mvlib.PrimitiveFindLine(polarity=params[\"Polarity\"].get(),\n                            min_contrast=params[\"Min Contrast\"].get(),\n                            min_shape=params[\"Min Shape\"].get(),\n                            find_mode=params[\"Find Mode\"].get(),\n                            rot_allowed=params[\"Rotation Allowed\"].get(),\n                            max_angle=params[\"Max Angle\"].get())\n        \n        # Input ROI has priority\n        rect = None\n        if \"search roi\" in inputs:\n            params[\"roi\"].setEnabled(False)\n            rect = inputs[\"search roi\"]\n            finder.set_roi(rect[\"x\"], rect[\"y\"], rect[\"width\"], rect[\"height\"])\n        elif params[\"roi\"].isEnabled():\n            rect = params[\"roi\"].getRect()\n            finder.set_roi(rect[\"x\"], rect[\"y\"], rect[\"width\"], rect[\"height\"])\n        else:\n            finder.roi = None\n\n        if \"offset\" in inputs:\n            if \"angle\" in inputs[\"offset\"]:\n                angle = inputs[\"offset\"][\"angle\"]\n            else:\n                angle = 0\n            finder.set_offset(inputs[\"offset\"][\"x\"],\n                              inputs[\"offset\"][\"y\"],\n                              angle)\n\n        outputs[\"result\"] = finder.find_line(inputs[\"img\"])\n\n        RED = 0xff0000\n        GREEN = 0xff00\n        params[\"view\"].updateImage(inputs[\"img\"])        \n        if outputs[\"result\"].return_val != 0:\n            if params[\"roi\"].isEnabled():\n                params[\"roi\"].setColor(RED)\n            elif rect:\n                params[\"view\"].AddRect(\n                        rect[\"x\"],\n                        rect[\"y\"],\n                        rect[\"width\"],\n                        rect[\"height\"], color=RED)\n                params[\"view\"].DrawAddedObjects()\n            outputs[\"found\"] = 0\n            outputs[\"score\"] = 0\n            outputs[\"center point\"] = {\n                \"x\": 0,\n                \"y\": 0}\n\n            raise Exception(\"Line Find Failed with return value: \" + \n                  mvlib.utils.script_result_to_string(outputs[\"result\"].return_val))\n        else:\n            if params[\"roi\"].isEnabled():\n                params[\"roi\"].setColor(GREEN)\n            elif rect:\n                params[\"view\"].AddRect(\n                        rect[\"x\"],\n                        rect[\"y\"],\n                        rect[\"width\"],\n                        rect[\"height\"], color=GREEN)\n            params[\"view\"].AddLine(outputs[\"result\"].line_point_a_x,\n                                   outputs[\"result\"].line_point_a_y,\n                                   outputs[\"result\"].line_point_b_x,\n                                   outputs[\"result\"].line_point_b_y,\n                                   3,\n                                   0x00FF00)  # Green\n            params[\"view\"].DrawAddedObjects()\n            outputs[\"found\"] = outputs[\"result\"].found\n            outputs[\"score\"] = outputs[\"result\"].score\n            outputs[\"center point\"] = {\n                \"x\": outputs[\"result\"].line_midpoint_x,\n                \"y\": outputs[\"result\"].line_midpoint_y}\n\n            log.info(\"Found: \" + str(outputs[\"found\"]))\n            log.info(\"Score: \" + str(outputs[\"score\"]))\n            log.info(\"Line Mid Point ({}, {})\".format(\n                outputs[\"result\"].line_midpoint_x,\n                outputs[\"result\"].line_midpoint_y))       ",
+            "preview": false,
+            "param_view": true,
+            "param_view_filter": {
+                "view": false,
+                "Min Contrast": false,
+                "Min Shape": false,
+                "Max Angle": false,
+                "Rotation Allowed": false,
+                "Polarity": false,
+                "Find Mode": false,
+                "roi": false
+            },
+            "group": null
+        },
+        {
+            "name": "RoiFromCenterPoint1",
+            "moduleName": "pyclarity_all_plugins.Utils.elements.RoiGenerator.RoiFromCenterPoint",
+            "uuid": "3638b2e4-f4a5-44fb-a16d-6fd765b2a114",
+            "inputs": [
+                {
+                    "name": "img",
+                    "uuid": "c410b2a5-04c4-4e4a-a36e-00eb922d722c",
+                    "direction": 0,
+                    "links": [],
+                    "show": true
+                },
+                {
+                    "name": "center point",
+                    "uuid": "2bab2f2c-b275-4341-8b18-69c18290f596",
+                    "direction": 0,
+                    "links": [
+                        {
+                            "otherNodeName": "featureFind",
+                            "otherNodeUuid": "aadf746f-1240-4c01-a583-36c295937403",
+                            "otherPin": "center point",
+                            "otherPinUuid": "2cfa0c4d-6b73-4828-95fe-1e8fc2ab2da3"
+                        }
+                    ],
+                    "show": true
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "roi",
+                    "uuid": "6cb855c0-0eeb-4b73-8215-e03aa1e34187",
+                    "direction": 1,
+                    "links": [
+                        {
+                            "otherNodeName": "Test_lineFinder",
+                            "otherNodeUuid": "c04bf97b-ce17-43f1-b3b7-7fd6be35dd59",
+                            "otherPin": "search roi",
+                            "otherPinUuid": "af41253f-26f9-4c29-b3b6-3fcb019fea12"
+                        }
+                    ]
+                }
+            ],
+            "params": [
+                {
+                    "className": "ViewerParam",
+                    "varName": "view",
+                    "value": false,
+                    "display": null,
+                    "uuid": "6143eb98-58ef-44e2-ba70-78c6c45e0bda",
+                    "geometry": null
+                },
+                {
+                    "className": "BoolParam",
+                    "varName": "full_width",
+                    "value": false,
+                    "display": "Use full width",
+                    "uuid": "894bc294-40ad-49a9-95d6-48618fd78a79",
+                    "runOnce": false
+                },
+                {
+                    "className": "BoolParam",
+                    "varName": "full_height",
+                    "value": false,
+                    "display": "Use full height",
+                    "uuid": "1f291ba8-2f10-4d1b-83bf-a06742b5b99b",
+                    "runOnce": false
+                },
+                {
+                    "className": "IntParam",
+                    "varName": "xoff",
+                    "value": 150,
+                    "display": "Column start\n  - offset from center point",
+                    "uuid": "d281eb78-1e7f-4494-bb9e-7cf12f5d28eb",
+                    "runOnce": false,
+                    "minVal": -1000000,
+                    "maxVal": 1000000,
+                    "step": 1
+                },
+                {
+                    "className": "IntParam",
+                    "varName": "yoff",
+                    "value": -80,
+                    "display": "Row start\n  - offset from center point",
+                    "uuid": "a90d4fd9-c7e7-4131-907e-acac2dc0353e",
+                    "runOnce": false,
+                    "minVal": -1000000,
+                    "maxVal": 1000000,
+                    "step": 1
+                },
+                {
+                    "className": "IntParam",
+                    "varName": "width",
+                    "value": 100,
+                    "display": "Width of ROI",
+                    "uuid": "b4e335d8-27f1-4ee9-819b-ed9c29c3e0ab",
+                    "runOnce": false,
+                    "minVal": -1000000,
+                    "maxVal": 1000000,
+                    "step": 1
+                },
+                {
+                    "className": "IntParam",
+                    "varName": "height",
+                    "value": 100,
+                    "display": "Height of ROI",
+                    "uuid": "e0b831a8-a9f8-4414-b9cf-3cd87fbf1212",
+                    "runOnce": false,
+                    "minVal": -1000000,
+                    "maxVal": 1000000,
+                    "step": 1
+                }
+            ],
+            "x": 107.6285183237915,
+            "y": 296.75982885368524,
+            "width": 141.0,
+            "height": 85.0,
+            "code": null,
+            "preview": false,
+            "param_view": true,
+            "param_view_filter": {
+                "view": false,
+                "full_width": false,
+                "full_height": false,
+                "xoff": false,
+                "yoff": false,
+                "width": false,
+                "height": false
+            },
+            "group": null
+        },
+        {
+            "name": "outputAsString",
+            "moduleName": "pyclarity.Graph.TempModules.52634b7ba2f442d0b2355d53e6f2aecf.outputAsString",
+            "uuid": "a6d06dab-41d3-4838-8f1e-ab26a6c973ed",
+            "inputs": [
+                {
+                    "name": "str in",
+                    "uuid": "bd1d4274-a731-4899-bdb9-512d49627df0",
+                    "direction": 0,
+                    "links": [
+                        {
+                            "otherNodeName": "Control_lineFinder",
+                            "otherNodeUuid": "bb7f2f38-d7fd-4c69-bd5a-c16d07199939",
+                            "otherPin": "found",
+                            "otherPinUuid": "97dd18cc-3b6f-4665-b48a-f58f2deafdd4"
+                        }
+                    ],
+                    "show": true
+                },
+                {
+                    "name": "str in 2",
+                    "uuid": "4bbc0cf1-1e68-4c90-822a-7b7766081637",
+                    "direction": 0,
+                    "links": [
+                        {
+                            "otherNodeName": "Test_lineFinder",
+                            "otherNodeUuid": "c04bf97b-ce17-43f1-b3b7-7fd6be35dd59",
+                            "otherPin": "found",
+                            "otherPinUuid": "f00a4bad-6c25-41ed-9949-f15d5a46cb2f"
+                        }
+                    ],
+                    "show": true
+                }
+            ],
+            "outputs": [],
+            "params": [
+                {
+                    "className": "StringParam",
+                    "varName": "out str",
+                    "value": "1  0",
+                    "display": null,
+                    "uuid": "d4b18387-5670-4d28-b555-05673dfc9f4c",
+                    "runOnce": false
+                },
+                {
+                    "className": "StringParam",
+                    "varName": "delimiter",
+                    "value": "",
+                    "display": null,
+                    "uuid": "79637255-24b2-4341-a99c-60b920c5da25",
+                    "runOnce": false
+                }
+            ],
+            "x": 691.727959639017,
+            "y": 299.96427408645224,
+            "width": 106.0,
+            "height": 85.0,
+            "code": "from time import time\nimport acquire\nimport cv2\nimport mvlib\nimport numpy as np\nfrom jlog import log\nfrom pyclarity_element_core.connectors import Input, Output\nfrom pyclarity_element_core.element import RUN_ONCE, Element\nfrom pyclarity_element_core.parameters import *\nfrom pyclarity_element_core.ImageHelper import ConvertImage, ImageOutputs\n\nclass outputAsString(Element):\n\n    _name = \"Simple output node for strings\"\n    _comment = \"takes two strings, puts a delimiter in between them\"\n\n    def attributes(self):\n\n        return [Input(\"str in\"), Input(\"str in 2\")], \\\n        [], \\\n        [StringParam(\"out str\"), StringParam(\"delimiter\")]\n\n    def processScript(self, inputs, outputs, params, preInit):\n        \n        try:\n            cLine = str(inputs[\"str in\"])\n        except KeyError:\n            cLine = \"\"\n\n        try: \n            tLine = str(inputs[\"str in 2\"])\n        except KeyError:\n            tLine = \"\"\n\n        delimiter = params[\"delimiter\"].get()\n        \n        if cLine == \"1\":\n            log.info(\"c is one!!\")\n        if cLine == \"0\":\n            log.info(\"c is none :(\")\n        \n        if tLine == \"1\":\n            log.info(\"t is one!!\")\n        if tLine == \"0\":\n            log.info(\"t is none :(\")\n        \n        if cLine == \"1\" and tLine == \"1\":\n            print(\"Negative\")\n        if cLine == \"1\" and tLine == \"0\":\n            print(\"Positive\")\n        if cLine == \"0\" and tLine == \"1\":\n            print(\"Invalid\")\n        if cLine == \"0\" and tLine == \"0\":\n            print(\"Invalid\")                                                                                                                                                                                                                                                                                                                                               ",
+            "preview": false,
+            "param_view": true,
+            "param_view_filter": {
+                "out str": false,
+                "delimiter": false
+            },
+            "group": null
+        },
+        {
+            "name": "acquireImageCamera",
+            "moduleName": "pyclarity_image_acquisition_toolbox.elements.AcquireImage.acquireImageCamera",
+            "uuid": "53b8cd6e-8e23-4b6e-a87e-4a9698199cd7",
+            "inputs": [
+                {
+                    "name": "sync",
+                    "uuid": "2a59a310-49f6-4b0d-8568-90da0186a116",
+                    "direction": 0,
+                    "links": [],
+                    "show": true
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "img",
+                    "uuid": "b5afbd90-afc8-4de8-acd7-a914dfd270f7",
+                    "direction": 1,
+                    "links": [
+                        {
+                            "otherNodeName": "featureFind",
+                            "otherNodeUuid": "aadf746f-1240-4c01-a583-36c295937403",
+                            "otherPin": "img",
+                            "otherPinUuid": "7a092a86-ddcf-499c-aa28-3fc5ff6ed266"
+                        },
+                        {
+                            "otherNodeName": "Control_lineFinder",
+                            "otherNodeUuid": "bb7f2f38-d7fd-4c69-bd5a-c16d07199939",
+                            "otherPin": "img",
+                            "otherPinUuid": "932ef0da-92fa-4439-a821-a7fdfca8d9f7"
+                        },
+                        {
+                            "otherNodeName": "Test_lineFinder",
+                            "otherNodeUuid": "c04bf97b-ce17-43f1-b3b7-7fd6be35dd59",
+                            "otherPin": "img",
+                            "otherPinUuid": "e381bddd-26eb-4331-a920-10c7b974c5aa"
+                        }
+                    ]
+                },
+                {
+                    "name": "offset",
+                    "uuid": "b5385cfb-a6ca-4436-aeaf-39399dba760e",
+                    "direction": 1,
+                    "links": []
+                },
+                {
+                    "name": "img_name",
+                    "uuid": "60e7b2db-e665-462d-8ac6-a92cfcd07ea5",
+                    "direction": 1,
+                    "links": []
+                }
+            ],
+            "params": [
+                {
+                    "className": "ViewerParam",
+                    "varName": "view",
+                    "value": false,
+                    "display": null,
+                    "uuid": "e45c618a-4076-417b-86a0-16096ca44988",
+                    "geometry": null
+                },
+                {
+                    "className": "AcquireConfigParam",
+                    "varName": "acqConf",
+                    "value": {
+                        "Width": 2592,
+                        "Height": 1944,
+                        "OffsetX": 0,
+                        "OffsetY": 0,
+                        "ReverseX": false,
+                        "ReverseY": false,
+                        "PixelFormat": 17301505,
+                        "BinningHorizontal": 1,
+                        "BinningVertical": 1,
+                        "AcquisitionMode": 0,
+                        "AcquisitionFrameCount": 1,
+                        "AcquisitionFrameTime": 0,
+                        "ExposureTime": 3000.0,
+                        "ExposureAuto": 0,
+                        "IllumEnable": 0,
+                        "IllumValue": 0,
+                        "FilterLibrary": "",
+                        "AnalogGain": 1,
+                        "BalanceWhiteAuto": 0,
+                        "ChunkModeActive": true,
+                        "ChunkSelector": 12,
+                        "ChunkEnable": true,
+                        "BayerConvAlg": 2,
+                        "GPIOPin": 0,
+                        "GPIOValue": 0,
+                        "ae_log": 0,
+                        "ae_target": 160,
+                        "ae_tolerance": 5,
+                        "ae_RowSkip": 6,
+                        "ae_PixSkip": 6,
+                        "ae_FrameSkip": 2,
+                        "ae_ExpMin": 100,
+                        "ae_ExpMax": 880000,
+                        "ae_startExp": 15000,
+                        "ae_targetPercentile": 95,
+                        "ae_conformanceTries": 1,
+                        "ae_ExpRoiEnable": false,
+                        "ae_ExpRoiLeft": 0,
+                        "ae_ExpRoiTop": 0,
+                        "ae_ExpRoiWidth": 2592,
+                        "ae_ExpRoiHeight": 1944,
+                        "ae_ReapplyStartingExposure": false,
+                        "ae_RememberedExposureFloor": 100,
+                        "ae_RememberedExposureCeiling": 200000,
+                        "ae_BayerSampleMode": 2
+                    },
+                    "display": "Camera Config",
+                    "uuid": "5ef3dab7-2f22-47bf-a78a-205500f60512",
+                    "offline": false,
+                    "cameraName": "9999999 U3V (JADAK - A Novanta Company-2978D00F9999999-9999999)"
+                },
+                {
+                    "className": "ComboBoxParam",
+                    "varName": "imageFormat",
+                    "value": 4,
+                    "display": "cvImage Image Format",
+                    "uuid": "4a00936a-9f94-4dea-a444-306fc69fac91",
+                    "runOnce": false,
+                    "values": {
+                        "Raw Bayer": 1,
+                        "Mono": 4,
+                        "RGB": 5,
+                        "BGR": 6
+                    },
+                    "defaultVal": 4
+                },
+                {
+                    "className": "PathParam",
+                    "varName": "cam_cfg",
+                    "value": "",
+                    "display": "Camera config file",
+                    "uuid": "8c77f535-5548-425a-9469-0014bdf5e0cf",
+                    "runOnce": true,
+                    "filters": null,
+                    "toOpen": true,
+                    "associate": null
+                },
+                {
+                    "className": "IntParam",
+                    "varName": "Index",
+                    "value": 0,
+                    "display": null,
+                    "uuid": "581a0748-5352-40ab-b43c-f59cf502cf98",
+                    "runOnce": false,
+                    "minVal": -1000000,
+                    "maxVal": 1000000,
+                    "step": 1
+                },
+                {
+                    "className": "PathParam",
+                    "varName": "path",
+                    "value": "",
+                    "display": "Image File",
+                    "uuid": "0d79239e-3b77-404f-b3d8-5865ad102df2",
+                    "runOnce": false,
+                    "filters": null,
+                    "toOpen": true,
+                    "associate": null
+                },
+                {
+                    "className": "BoolParam",
+                    "varName": "loop",
+                    "value": false,
+                    "display": "Continuous Loop",
+                    "uuid": "a60c438a-1234-4108-96df-061b2072724a",
+                    "runOnce": false
+                }
+            ],
+            "x": -122.84868421052633,
+            "y": -13.842105263157896,
+            "width": 136.0,
+            "height": 102.0,
+            "code": null,
+            "preview": false,
+            "param_view": true,
+            "param_view_filter": {
+                "view": false,
+                "acqConf": false,
+                "imageFormat": false,
+                "cam_cfg": false,
+                "Index": false,
+                "path": false,
+                "loop": false
+            },
+            "group": null
+        }
+    ]
+}

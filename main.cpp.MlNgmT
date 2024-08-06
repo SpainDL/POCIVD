@@ -1,0 +1,118 @@
+#include "serial_reader_imp.h"
+#include "tm_reader.h"
+#include <time.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdarg.h>
+#include <string.h>
+#include <inttypes.h>
+#include "tmr_utils.h"
+#include <unistd.h>
+#include <iostream>
+
+
+
+void errx(int exitval, const char* fmt, ...)
+{
+  va_list ap;
+
+  va_start(ap, fmt);
+  vfprintf(stderr, fmt, ap);
+
+  exit(exitval);
+}
+
+
+void checkerr(TMR_Reader* rp, TMR_Status ret, int exitval, const char* msg)
+{
+
+  if (TMR_SUCCESS != ret)
+  {
+    errx(exitval, "Error %s: %s\n", msg, TMR_strerr(rp, ret));
+  }
+
+}
+
+void callback(TMR_Reader* reader, const TMR_TagReadData* t, void* cookie);
+void exceptionCallback(TMR_Reader* reader, TMR_Status error, void* cookie);
+
+int main()
+{
+  std::cout << __LINE__ <<  "Hello World!\n";
+
+  TMR_Reader r, * rp = NULL;
+  TMR_Status ret;
+  TMR_ReadPlan plan;
+  TMR_ReadListenerBlock rlb;
+  TMR_ReadExceptionListenerBlock reb;
+  uint8_t antennaList[] = { 1 };
+
+  rp = &r;
+
+  ret = TMR_create(rp, "tmr:///dev/ttyUSB0");
+  checkerr(rp, ret, 1, "creating reader");
+  std::cout << __LINE__ << "Creating!\n";
+  ret = TMR_connect(rp);
+  checkerr(rp, ret, 1, "Connecting reader");
+  std::cout << __LINE__ <<  "Connecting!\n";
+
+  ret = TMR_RP_init_simple(&plan, 1, antennaList, TMR_TAG_PROTOCOL_ISO14443A, 1000);
+  checkerr(rp, ret, 1, "initializing the  read plan");
+  std::cout << __LINE__ <<  "Read Plan!\n";
+  ret = TMR_paramSet(rp, TMR_PARAM_READ_PLAN, &plan);
+  checkerr(rp, ret, 1, "setting read plan");
+  std::cout << __LINE__ <<  "Param Set!\n";
+  rlb.listener = callback;
+  rlb.cookie = NULL;
+
+  reb.listener = exceptionCallback;
+  reb.cookie = NULL;
+
+  ret = TMR_addReadListener(rp, &rlb);
+  checkerr(rp, ret, 1, "adding read listener");
+  std::cout << __LINE__ <<  "Connecting\n";
+  ret = TMR_addReadExceptionListener(rp, &reb);
+  checkerr(rp, ret, 1, "adding exception listener");
+  std::cout << __LINE__ <<  "Connecting!\n";
+  ret = TMR_startReading(rp);
+  checkerr(rp, ret, 1, "starting reading");
+  std::cout << __LINE__ <<  "Connecting!\n";
+
+  usleep(5000000);
+
+  ret = TMR_stopReading(rp);
+  checkerr(rp, ret, 1, "stopping reading");
+  ret = TMR_destroy(rp);
+  std::cout << __LINE__ <<  "Connecting!\n";
+  return 0;
+}
+
+void
+callback(TMR_Reader* reader, const TMR_TagReadData* t, void* cookie)
+{
+    std::cout << __LINE__ <<  "TAG!\n";
+//  char epcStr[128];
+//  char timeStr[128];
+
+//  TMR_bytesToHex(t->tag.epc, t->tag.epcByteCount, epcStr);
+//  TMR_getTimeStamp(reader, t, timeStr);
+
+//  printf("Background read: Tag ID:%s ant:%d count:%d ", epcStr, t->antenna, t->readCount);
+//  printf("time:%s\n", timeStr);
+
+//  /* Reset the variable for valid tag response. */
+//  reader->lastReportedException = 0;
+}
+
+void
+exceptionCallback(TMR_Reader* reader, TMR_Status error, void* cookie)
+{
+    std::cout << __LINE__ <<  "Connecting!\n";
+
+  if (reader->lastReportedException != error)
+  {
+    fprintf(stdout, "Error:%s\n", TMR_strerr(reader, error));
+  }
+
+  reader->lastReportedException = error;
+}
