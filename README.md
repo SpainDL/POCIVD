@@ -5,16 +5,22 @@ of a barcode on one end. On the other end, there are test containing a line labe
 the test results can either be negative, positive, or invalid.
 
 Devices
+
 Reach G3 4.3” PCAB,
 - touch screen display and device controller
 4.3" G3MSB Projected Capacitive (Part Number: 51-0603-011) | Reach Technology
+  
 Thing Magic RFID M3e HF/LF RFID Module,
 - secure access RFID reading
 ThingMagic® M3e HF/LF RFID Secure Module - Jadak - A Novanta Company (jadaktech.com)
+
 JADAK Allegro IVD Penny-Whistle,
+
 - machine vision image processing
 Allegro IVD Smart Camera Series - Jadak - A Novanta Company (jadaktech.com)
+
 JADAK VIBE barcode reader,
+
 - reading barcode data
 VIBE® Fixed Mount Machine Vision Camera - Jadak - A Novanta Company (jadaktech.com)
 
