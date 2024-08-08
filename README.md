@@ -1,3 +1,5 @@
+Introduction
+
 The Point of Care Invitro Diagnostics application was created to control the (POCIVD) Demo and was developed in C++ using QT, 
 which is a Cross-platform application development platform. The purpose of this application is for the user (physician) to present 
 their ID badge (RFID card) and then perform an analysis of a test strip. The test strip consists of a patient’s ID in the form 
@@ -25,12 +27,15 @@ JADAK VIBE barcode reader,
 VIBE® Fixed Mount Machine Vision Camera - Jadak - A Novanta Company (jadaktech.com)
 
 Properties
+
 The QT framework was used to take advantage of its cross-compiling ability which allows the development of C++ applications that can be built and hosted on the G3 running a Linux-based OS.
-Cross Compilation to G3 Display. Please download "POCIVD1_1 read me" for full project description, link below. For non code related demo instructions, such as setup instructions and running the demo 
+Cross Compilation to G3 Display. Please download "POCIVD1_1 read me" for full project description, link below. For non code related demo instructions, such as setup instructions and running the demo.
 
 READ ME:
+
 https://github.com/SpainDL/POCIVD1_1/blob/9749a3097f0009da0bb4f871af18a1bde53c4eaa/POCIVD%201_1%20read%20me.docx
 
 SETUP & RUNNING DEMO:
+
 https://github.com/SpainDL/POCIVD1_1/blob/9749a3097f0009da0bb4f871af18a1bde53c4eaa/Running%20the%20POC%20IVD%20Demo.docx
 
